@@ -1,39 +1,26 @@
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
+# Downloaded market data
+data/raw/
+data/processed/
+data/factors/
 
-# Data (large binaries — regenerate with python main.py)
-data/*.parquet
+# Generated outputs
+results/logs/
+results/plots/
+results/tearsheets/
+results/*.png
+results/metrics.json
 
 # Python
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
-*.so
-*.egg
 *.egg-info/
-dist/
-build/
-.eggs/
-.mypy_cache/
-.ruff_cache/
-
-# Environments
-.env
 .venv/
 venv/
-env/
+dist/
+build/
 
-# Logs (auto-generated)
-results/run.log
+# macOS
+.DS_Store
 
-# Jupyter
-.ipynb_checkpoints/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
+# Claude Code
+.claude/
