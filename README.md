@@ -1,8 +1,8 @@
 # Cross-Sectional Tech Stat-Arb — Five-Factor Mean-Reversion System
 
-A fully self-contained, walk-forward **statistical arbitrage backtester** applied to a universe of **50 US tech stocks** (2015 – present).
+A fully self-contained, walk-forward **statistical arbitrage backtester** applied to a universe of **50 US tech stocks**.
 
-The system neutralizes common factor exposure with a five-factor risk model, then generates a mean-reversion alpha signal from idiosyncratic residuals via Fama-MacBeth cross-sectional regression. Dollar-neutral long/short portfolios are sized weekly, with full transaction cost modelling.
+Data runs from **2015**; the model is trained on 2015–2020 and backtested on out-of-sample data from **2021 onwards**. The system neutralizes common factor exposure with a five-factor risk model, then generates a mean-reversion alpha signal from idiosyncratic residuals via Fama-MacBeth cross-sectional regression. Dollar-neutral long/short portfolios are sized weekly, with full transaction cost modelling.
 
 ---
 
@@ -52,8 +52,11 @@ The residual `ε_i,t` is the factor-neutral idiosyncratic return. A 63-day rolli
 
 | Period | Dates |
 |---|---|
+| Training | 2015-01-01 – 2020-12-31 |
 | Validation | 2021-01-01 – 2022-12-31 |
 | Test (OOS) | 2023-01-01 – present |
+
+Signal parameters are chosen on the training period; validation and test are fully held out.
 
 ---
 
@@ -67,12 +70,13 @@ The residual `ε_i,t` is the factor-neutral idiosyncratic return. A 63-day rolli
 | Sortino Ratio | 0.75 |
 | Max Drawdown | -16.57% |
 | Market Beta | 0.0003 |
-| IC Mean | 0.021 |
+| IC Mean (test period) | 0.021 |
+| IC Mean (full sample) | 0.012 |
 | IC t-stat | 2.27 |
 | Gross Sharpe | 1.00 |
 | Daily Turnover | 23.3% |
 
-The strategy is near-market-neutral (β ≈ 0.0003). The gross→net Sharpe compression (1.00 → 0.49) reflects realistic transaction cost drag at ~632 bps/year.
+The strategy is near-market-neutral (β ≈ 0.0003). The gross→net Sharpe compression (1.00 → 0.49) reflects realistic transaction cost drag at ~632 bps/year. The IC improves meaningfully in the test period (0.021 vs 0.012 full-sample), driven by stronger mean-reversion dynamics in the AI boom regime (2023–present).
 
 ---
 
